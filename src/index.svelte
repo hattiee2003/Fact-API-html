@@ -1,3 +1,19 @@
-<h1>Svelte</h1>
+<script>
+	let fact = ''
+	
+  async function getFacts() {
+    let response = await fetch("https://harriet-facts.netlify.app/.netlify/functions/random-fact");
+    response = await response.json();
+  	fact = response.body
+  }
+</script>
 
-<p>Welcome to coding with Svelte!</p>
+<h1>Facts about me!!!!</h1>
+
+<button on:click={getFacts}>
+	Click to get a fact!
+</button>
+
+<p>
+	{fact}
+</p>
